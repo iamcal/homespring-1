@@ -192,7 +192,19 @@ class node name (parent : node option) io =
               | {ready=d} when d = false -> s.ready <- true; true
               | _ when self#salmonBlocked s -> true
               | _ -> match parent with
-                        None -> io#print s.name; false
+                        None -> begin 
+                                  (* if (downstream s) then
+                                    io#print "dn:"
+                                  else
+                                    io#print "up:";
+                                  if (mature s) then
+                                    io#print "mt:"
+                                  else
+                                    io#print "yg:"; *)
+                                  io#print ">";
+                                  io#print s.name;
+                                  false
+                                end
                       | Some p ->   if p#salmonVeryBlocked s then
                                         true
                                     else

@@ -24,6 +24,7 @@ else
             n#fishTick;
             n#miscTick;
             n#inputTick;
+            (* print_string "TICK"; *)
             flush Pervasives.stdout;
         done
     in
